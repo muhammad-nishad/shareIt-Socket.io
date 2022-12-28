@@ -2,7 +2,7 @@ const { Socket } = require('socket.io')
 
 const io=require('socket.io')(8800,{
     cors:{
-        origin:"*"
+        origin:"https://shareit-live.netlify.app"
     }
 })
 
