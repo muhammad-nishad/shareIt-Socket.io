@@ -25,7 +25,9 @@ io.on('connection',(socket)=>{
     })
     //send message
     socket.on("send-message",(data)=>{
+        console.log(data,'dataofsocket');
         const {receiverId}=data
+    
         const user=activeUsers.find((user)=> user.userId==receiverId)
         console.log("sending from socket to :",receiverId);
         console.log("Data",data);
