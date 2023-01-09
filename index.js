@@ -7,7 +7,7 @@ const io=require('socket.io')(8800,{
     }
 })
 
-let activeUsers=[]
+let activeUsers=[] 
 
 io.on('connection',(socket)=>{
     // add new User
@@ -26,7 +26,7 @@ io.on('connection',(socket)=>{
     })
     //send message
     socket.on("send-message",(data)=>{
-        console.log(data,'dataofsocket');
+        console.log(data,'dataofsocket');   
         const {receiverId}=data
     
         const user=activeUsers.find((user)=> user.userId==receiverId)
@@ -36,7 +36,8 @@ io.on('connection',(socket)=>{
             io.to(user.socketId).emit("receive-message",data)
         }
 
-    })
+    })   
+     
     socket.on("disconnect",()=>{
         activeUsers=activeUsers.filter((user)=> user.socketId!==socket.id)
         console.log("user disconnected",activeUsers)
